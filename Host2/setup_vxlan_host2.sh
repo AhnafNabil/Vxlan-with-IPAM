@@ -4,8 +4,8 @@ set -e
 echo "🌐 Setting up VXLAN on Host 2..."
 
 # Host configuration - Get from environment or AWS metadata
-LOCAL_IP=${HOST2_IP:-$(curl -s http://169.254.169.254/latest/meta-data/local-ipv4)}
-REMOTE_IP=${HOST1_IP:-$(curl -s http://169.254.169.254/latest/meta-data/local-ipv4)}
+LOCAL_IP=${HOST2_IP:-"127.0.0.1"}
+REMOTE_IP=${HOST1_IP:-"127.0.0.1"}
 VXLAN_ID=100
 VXLAN_PORT=4789
 DOCKER_SUBNET="172.20.0.0/16"

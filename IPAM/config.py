@@ -1,13 +1,15 @@
+import os
+
 # Network Configuration
 NETWORK_SUBNET = "172.20.0.0/16"
 NETWORK_START = "172.20.0.10"
 NETWORK_END = "172.20.255.254"
 GATEWAY_IP = "172.20.0.1"
 
-# Node IPs
-IPAM_NODE_IP = "10.0.1.4"
-HOST1_IP = "10.0.1.65"
-HOST2_IP = "10.0.1.106"
+# Node IPs - Use environment variables
+IPAM_NODE_IP = os.getenv("IPAM_NODE_IP", "127.0.0.1")
+HOST1_IP = os.getenv("HOST1_IP", "127.0.0.1")
+HOST2_IP = os.getenv("HOST2_IP", "127.0.0.1")
 
 # Ports
 IPAM_PORT = 8000

@@ -13,11 +13,10 @@ services:
       - ipam-net
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "redis-cli", "--raw", "incr", "ping_counter"]
-      interval: 5s
-      timeout: 3s
-      retries: 10
-      start_period: 15s
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   ipam-service:
     build: .
@@ -30,16 +29,6 @@ services:
     networks:
       - ipam-net
     restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 30s
-    environment:
-      - REDIS_HOST=redis
-      - REDIS_PORT=6379
-      - REDIS_DB=0
 
 networks:
   ipam-net:
